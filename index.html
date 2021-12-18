@@ -13,74 +13,78 @@
     <img class="header__logo" src="./images/header-logo.svg" alt="Логотип">
   </header>
 
-  <section class="profile">
-    <img class="profile__avatar" src="./images/custo.jpg" alt="Жак Кусто">
-    <div class="profile__info">
-      <div class="profile__titles">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <p class="profile__description">Исследователь океана</p>
-      </div>
-      <button class="profile__edit-button"></button>
-    </div>
+  <main class="content">
 
-    <button class="profile__add-button"></button>
-  </section>
+    <section class="profile">
+      <img class="profile__avatar" src="./images/custo.jpg" alt="Жак Кусто">
+      <div class="profile__info">
+        <div class="profile__titles">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
+        <button class="profile__edit-button"></button>
+      </div>
 
-  <section class="elements">
-    <div class="element">
-      <img class="element__mask-group" src="./images/karachaevsk.jpg" alt="Карачаевск">
-      <div class="element__group">
-        <h3 class="element__title">Карачаевск</h3>
-        <button class="element__like"></button>
+      <button class="profile__add-button"></button>
+    </section>
+
+    <section class="elements">
+      <div class="element">
+        <img class="element__mask-group" src="./images/karachaevsk.jpg" alt="Карачаевск">
+        <div class="element__group">
+          <h3 class="element__title">Карачаевск</h3>
+          <button class="element__like"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__mask-group" src="./images/elbrus.jpg" alt="Эльбрус">
-      <div class="element__group">
-        <h3 class="element__title">Гора Эльбрус</h3>
-        <button class="element__like"></button>
+      <div class="element">
+        <img class="element__mask-group" src="./images/elbrus.jpg" alt="Эльбрус">
+        <div class="element__group">
+          <h3 class="element__title">Гора Эльбрус</h3>
+          <button class="element__like"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__mask-group" src="./images/dombay.jpg" alt="Домбай">
-      <div class="element__group">
-        <h3 class="element__title">Домбай</h3>
-        <button class="element__like"></button>
+      <div class="element">
+        <img class="element__mask-group" src="./images/dombay.jpg" alt="Домбай">
+        <div class="element__group">
+          <h3 class="element__title">Домбай</h3>
+          <button class="element__like"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__mask-group" src="./images/tatarstan.jpg" alt="Татарстан">
-      <div class="element__group">
-        <h3 class="element__title">Татарстан</h3>
-        <button class="element__like"></button>
+      <div class="element">
+        <img class="element__mask-group" src="./images/tatarstan.jpg" alt="Татарстан">
+        <div class="element__group">
+          <h3 class="element__title">Татарстан</h3>
+          <button class="element__like"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__mask-group" src="./images/ural.jpg" alt="Урал">
-      <div class="element__group">
-        <h3 class="element__title">Урал</h3>
-        <button class="element__like"></button>
+      <div class="element">
+        <img class="element__mask-group" src="./images/ural.jpg" alt="Урал">
+        <div class="element__group">
+          <h3 class="element__title">Урал</h3>
+          <button class="element__like"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img class="element__mask-group" src="./images/yamal.jpg" alt="Ямал">
-      <div class="element__group">
-        <h3 class="element__title">Ямал</h3>
-        <button class="element__like"></button>
+      <div class="element">
+        <img class="element__mask-group" src="./images/yamal.jpg" alt="Ямал">
+        <div class="element__group">
+          <h3 class="element__title">Ямал</h3>
+          <button class="element__like"></button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </main>
 
   <footer class="footer">
     <p class="footer__content">&copy; 2020 Mesto Russia</p>
   </footer>
   <section class="popup">
     <form class="popup__form">
-      <button class="popup__close-button" type="button" ></button>
+      <button class="popup__close-button" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <fieldset class="popup__field-container">
-        <input type="text" value="" class="popup__field-name">
-        <input type="text" value="" class="popup__field-description">
+        <input type="text" class="popup__field-name">
+        <input type="text" class="popup__field-description">
       </fieldset>
       <button type="submit" class="popup__submit-button">Сохранить</button>
     </form>
@@ -89,4 +93,5 @@
 
   <script src="./scripts/index.js"></script>
 </body>
+
 </html>
