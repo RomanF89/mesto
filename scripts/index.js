@@ -9,6 +9,8 @@ const profileDescription = document.querySelector(".profile__description");
 
 function togglePopup() {
   popup.classList.toggle("popup_opened");
+  popupName.value = profileName.textContent
+  popupDescription.value = profileDescription.textContent;
 }
 
 function closePopupOnOverlayClick(event) {
