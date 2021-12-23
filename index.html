@@ -22,55 +22,55 @@
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__description">Исследователь океана</p>
         </div>
-        <button class="profile__edit-button"></button>
+        <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
       </div>
 
-      <button class="profile__add-button"></button>
+      <button class="profile__add-button" type="button" aria-label="Добавить элемент"></button>
     </section>
 
     <section class="elements">
-      <div class="element">
+      <article class="element">
         <img class="element__mask-group" src="./images/karachaevsk.jpg" alt="Карачаевск">
         <div class="element__group">
-          <h3 class="element__title">Карачаевск</h3>
-          <button class="element__like"></button>
+          <h2 class="element__title">Карачаевск</h2>
+          <button type="button" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img class="element__mask-group" src="./images/elbrus.jpg" alt="Эльбрус">
         <div class="element__group">
-          <h3 class="element__title">Гора Эльбрус</h3>
-          <button class="element__like"></button>
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button type="button" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img class="element__mask-group" src="./images/dombay.jpg" alt="Домбай">
         <div class="element__group">
-          <h3 class="element__title">Домбай</h3>
-          <button class="element__like"></button>
+          <h2 class="element__title">Домбай</h2>
+          <button type="button" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img class="element__mask-group" src="./images/tatarstan.jpg" alt="Татарстан">
         <div class="element__group">
-          <h3 class="element__title">Татарстан</h3>
-          <button class="element__like"></button>
+          <h2 class="element__title">Татарстан</h2>
+          <button type="button" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img class="element__mask-group" src="./images/ural.jpg" alt="Урал">
         <div class="element__group">
-          <h3 class="element__title">Урал</h3>
-          <button class="element__like"></button>
+          <h2 class="element__title">Урал</h2>
+          <button type="button" class="element__like"></button>
         </div>
-      </div>
-      <div class="element">
+      </article>
+      <article class="element">
         <img class="element__mask-group" src="./images/yamal.jpg" alt="Ямал">
         <div class="element__group">
-          <h3 class="element__title">Ямал</h3>
-          <button class="element__like"></button>
+          <h2 class="element__title">Ямал</h2>
+          <button type="button" class="element__like"></button>
         </div>
-      </div>
+      </article>
     </section>
 
   </main>
@@ -79,16 +79,17 @@
     <p class="footer__content">&copy; 2020 Mesto Russia</p>
   </footer>
   <section class="popup">
-    <form class="popup__form">
-      <button class="popup__close-button" type="button"></button>
+    <div class="popup__container">
+    <form name="popup-form" class="popup__form">
+      <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <fieldset class="popup__field-container">
-        <input type="text" class="popup__field-name">
-        <input type="text" class="popup__field-description">
+        <input name="name" type="text" class="popup__field popup__field_name">
+        <input name="description" type="text" class="popup__field popup__field_description">
       </fieldset>
-      <button type="submit" class="popup__submit-button">Сохранить</button>
+      <button type="submit" class="popup__submit-button" aria-label="Сохранить">Сохранить</button>
     </form>
-
+    </div>
   </section>
 
   <script src="./scripts/index.js"></script>

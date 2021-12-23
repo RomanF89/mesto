@@ -2,15 +2,19 @@ const popupOpenButton = document.querySelector(".profile__edit-button");
 const popupCloseButton = document.querySelector(".popup__close-button");
 const popup = document.querySelector(".popup");
 const popupForm = document.querySelector(".popup__form")
-const popupName = document.querySelector(".popup__field-name");
-const popupDescription = document.querySelector(".popup__field-description");
+const popupName = document.querySelector(".popup__field_name");
+const popupDescription = document.querySelector(".popup__field_description");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
-function togglePopup() {
-  popup.classList.toggle("popup_opened");
+function openPopup() {
+  popup.classList.add("popup_opened");
   popupName.value = profileName.textContent
   popupDescription.value = profileDescription.textContent;
+}
+
+function closePopup() {
+  popup.classList.remove("popup_opened");
 }
 
 function closePopupOnOverlayClick(event) {
@@ -23,12 +27,12 @@ function popupSubmit(evt) {
   evt.preventDefault()
   profileName.textContent = popupName.value;
   profileDescription.textContent = popupDescription.value;
-  togglePopup();
+  closePopup();
 }
 
-popupOpenButton.addEventListener("click", togglePopup);
+popupOpenButton.addEventListener("click", openPopup);
 
-popupCloseButton.addEventListener("click", togglePopup);
+popupCloseButton.addEventListener("click", closePopup);
 
 popup.addEventListener("click", closePopupOnOverlayClick);
 
