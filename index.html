@@ -44,8 +44,12 @@
         <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <fieldset class="popup__field-container">
-          <input name="name" type="text" class="popup__field popup__field_type_name">
-          <input name="description" type="text" class="popup__field popup__field_type_description">
+          <input id="user-name" name="name" type="text" class="popup__field popup__field_type_name" required
+            minlength="2" maxlength="40">
+          <span id="user-name-error" class="popup__error-message popup__error-message_visible"></span>
+          <input id="user-description" name="description" type="text" class="popup__field popup__field_type_description"
+            required minlength="2" maxlength="200">
+          <span id="user-description-error" class="popup__error-message popup__error-message_visible"></span>
         </fieldset>
         <button type="submit" class="popup__submit-button" aria-label="Сохранить">Сохранить</button>
       </form>
@@ -58,9 +62,12 @@
         <button class="popup__close-button" type="button" aria-label="Закрыть окно"></button>
         <h2 class="popup__title">Новое место</h2>
         <fieldset class="popup__field-container">
-          <input name="name" type="text" class="popup__field popup__field_type_card-name" placeholder="Название">
-          <input name="description" type="text" class="popup__field popup__field_type_card-link"
-            placeholder="Ссылка на картинку">
+          <input id="card-name" name="name" type="text" class="popup__field popup__field_type_card-name"
+            placeholder="Название" required minlength="2" maxlength="30">
+          <span id="card-name-error" class="popup__error-message popup__error-message_visible"></span>
+          <input id="card-description" name="description" type="url" class="popup__field popup__field_type_card-link"
+            placeholder="Ссылка на картинку" required>
+          <span id="card-description-error" class="popup__error-message popup__error-message_visible"></span>
         </fieldset>
         <button type="submit" class="popup__submit-button" aria-label="Создать">Создать</button>
       </form>
@@ -90,6 +97,7 @@
 
   <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
+  <script src='./scripts/validation.js'></script>
 </body>
 
 </html>
