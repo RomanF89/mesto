@@ -68,30 +68,30 @@ initialCards.forEach(renderCard);
 
 //Функции попапов
 
-function addClosePopupOnEsc(popupWindow) {
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopupWindow(popupWindow);
-    }
-  });
-}
-
-function removeClosePopupOnEsc(popupWindow) {
-  document.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopupWindow(popupWindow);
-    }
-  });
-}
-
 function openPopupWindow(popupWindow) {
   popupWindow.classList.add("popup_opened");
-  addClosePopupOnEsc(popupWindow);
+  addClosePopupOnEsc();
 }
 
 function closePopupWindow(popupWindow) {
   popupWindow.classList.remove("popup_opened");
-  removeClosePopupOnEsc(popupWindow);
+  removeClosePopupOnEsc();
+}
+
+// Реализация закрытия по Esc
+function addClosePopupOnEsc() {
+  document.addEventListener('keydown', checkEscKeydown);
+}
+
+function removeClosePopupOnEsc() {
+  document.removeEventListener('keydown', checkEscKeydown);
+}
+
+function checkEscKeydown (evt) {
+  popupWindow = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopupWindow(popupWindow);
+  };
 }
 
 //Функция удаления ошибок при повторном открытии попапа
@@ -103,13 +103,14 @@ function removeErrors(form) {
     errorContainer.classList.remove('popup__error-message_visible');
     errorContainer.textContent = '';
   })
+
 }
 
 function openEditPopup() {
   popupEditName.value = profileName.textContent
   popupEditDescription.value = profileDescription.textContent;
   removeErrors(popupEditForm);
-  validationForPopup();
+  toggleButton(popupEditForm, validationObject)
   openPopupWindow(popupEdit);
 }
 
@@ -119,7 +120,7 @@ function closePopupOnOverlayClick(event) {
   };
 };
 
-function SubmitEditPopup(evt) {
+function submitEditPopup(evt) {
   evt.preventDefault()
   profileName.textContent = popupEditName.value;
   profileDescription.textContent = popupEditDescription.value;
@@ -134,22 +135,23 @@ function submitAddCardPopup(evt) {
   });
   closePopupWindow(popupAddCard);
   popupAddCardForm.reset();
+  toggleButton(popupAddCardForm, validationObject);
 }
 
 //Открыть попап с картинкой
 
-function openImagePopup(data, PopupWindowToOpen) {
+function openImagePopup(data, popupWindowToOpen) {
   popupImage.src = data.src;
   popupImageCaption.textContent = data.alt;
   popupImage.alt = data.alt;
-  openPopupWindow(PopupWindowToOpen);
+  openPopupWindow(popupWindowToOpen);
 }
 
 //Cлушатели
 
 popupEdit.addEventListener("click", closePopupOnOverlayClick);
 
-popupEditForm.addEventListener("submit", SubmitEditPopup);
+popupEditForm.addEventListener("submit", submitEditPopup);
 
 popupEditOpenButton.addEventListener("click", openEditPopup);
 
@@ -159,7 +161,7 @@ popupAddCard.addEventListener("click", closePopupOnOverlayClick);
 
 popupAddCardForm.addEventListener("submit", submitAddCardPopup);
 
-popupAddOpenButton.addEventListener("click", function () { openPopupWindow(popupAddCard), removeErrors(popupAddCardForm) });
+popupAddOpenButton.addEventListener("click", function () { openPopupWindow(popupAddCard)});
 
 popupAddCloseButton.addEventListener("click", function () { closePopupWindow(popupAddCard) });
 

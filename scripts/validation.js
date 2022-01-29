@@ -1,23 +1,16 @@
-enableValidation({
+
+const validationObject = {
   formSelector: '.popup__form',
   inputSelector: '.popup__field',
   submitButtonSelector: '.popup__submit-button',
   inactiveButtonClass: 'popup__submit-button_disabled',
   inputErrorClass: 'popup__field_type_error',
   errorClass: 'popup__error-message_visible'
-});
+};
 
-//Для использования валидации значений в функциях при открытии уже заполненного попапа
-function validationForPopup() {
-  enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__field',
-    submitButtonSelector: '.popup__submit-button',
-    inactiveButtonClass: 'popup__submit-button_disabled',
-    inputErrorClass: 'popup__field_type_error',
-    errorClass: 'popup__error-message_visible'
-  });
-}
+
+enableValidation(validationObject);
+
 
 function submitForm(evt) {
   evt.preventDefault();
@@ -51,8 +44,8 @@ function hideError(input, errorContainer, { inputErrorClass, errorClass }) {
 
 function validateInput(form, input, classes) {
   const errorContainer = document.querySelector(`#${input.id}-error`);
-  let isValid = input.validity.valid;
-  let errorText = input.validationMessage;
+  const isValid = input.validity.valid;
+  const errorText = input.validationMessage;
 
   if (isValid) {
     hideError(input, errorContainer, classes);
