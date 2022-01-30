@@ -70,25 +70,16 @@ initialCards.forEach(renderCard);
 
 function openPopupWindow(popupWindow) {
   popupWindow.classList.add("popup_opened");
-  addClosePopupOnEsc();
-}
+  document.addEventListener('keydown', checkEscKeydown);}
 
 function closePopupWindow(popupWindow) {
   popupWindow.classList.remove("popup_opened");
-  removeClosePopupOnEsc();
-}
+  document.removeEventListener('keydown', checkEscKeydown);}
 
 // Реализация закрытия по Esc
-function addClosePopupOnEsc() {
-  document.addEventListener('keydown', checkEscKeydown);
-}
-
-function removeClosePopupOnEsc() {
-  document.removeEventListener('keydown', checkEscKeydown);
-}
 
 function checkEscKeydown (evt) {
-  popupWindow = document.querySelector('.popup_opened');
+  const popupWindow = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
     closePopupWindow(popupWindow);
   };
