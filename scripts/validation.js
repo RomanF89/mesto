@@ -1,4 +1,3 @@
-
 const validationObject = {
   formSelector: '.popup__form',
   inputSelector: '.popup__field',
@@ -8,69 +7,88 @@ const validationObject = {
   errorClass: 'popup__error-message_visible'
 };
 
+class FormValidator {
+  constructor(object, form) {
+    this._form = form;
+    this._obj = object;
+  }
 
-enableValidation(validationObject);
+  enableValidation() {
+    this._form.addEventListener('submit', this._submitForm);
+    this._form.addEventListener('reset', () => { this._disableButton() });
+    const inputs = this._form.querySelectorAll(this._obj.inputSelector);
 
+    inputs.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._validateInput(input);
+      });
+    });
+    this._toggleButton();
 
-function submitForm(evt) {
-  evt.preventDefault();
-}
+  }
 
-function toggleButton(form, { submitButtonSelector, inactiveButtonClass }) {
-  const button = form.querySelector(submitButtonSelector);
-  const isFormValid = form.checkValidity();
-  if (isFormValid) {
-    button.classList.remove(inactiveButtonClass);
+  _submitForm(evt) {
+    evt.preventDefault();
+  }
+
+  _validateInput(input) {
+    const errorContainer = document.querySelector(`#${input.id}-error`);
+    const isValid = input.validity.valid;
+    const errorText = input.validationMessage;
+
+    if (isValid) {
+      this._hideError(input, errorContainer);
+    }
+
+    else {
+      this._showError(input, errorContainer, errorText);
+    }
+    this._toggleButton();
+  }
+
+  _showError(input, errorContainer, errorMessage) {
+    input.classList.add(this._obj.inputErrorClass);
+    errorContainer.classList.add(this._obj.errorClass);
+    errorContainer.textContent = errorMessage;
+  }
+
+  _hideError(input, errorContainer) {
+    input.classList.remove(this._obj.inputErrorClass);
+    errorContainer.classList.remove(this._obj.errorClass);
+    errorContainer.textContent = '';
+  }
+
+  _enableButton() {
+    const button = this._form.querySelector(this._obj.submitButtonSelector);
+    button.classList.remove(this._obj.inactiveButtonClass);
     button.removeAttribute('disabled');
   }
 
-  else {
-    button.classList.add(inactiveButtonClass);
+  _disableButton() {
+    const button = this._form.querySelector(this._obj.submitButtonSelector);
+    button.classList.add(this._obj.inactiveButtonClass);
     button.setAttribute('disabled', '');
   }
-}
 
-function showError(input, errorContainer, errorMessage, { inputErrorClass, errorClass }) {
-  input.classList.add(inputErrorClass);
-  errorContainer.classList.add(errorClass);
-  errorContainer.textContent = errorMessage;
-}
+  _toggleButton() {
+    const isFormValid = this._form.checkValidity();
+    if (isFormValid) {
+      this._enableButton();
+    }
 
-function hideError(input, errorContainer, { inputErrorClass, errorClass }) {
-  input.classList.remove(inputErrorClass);
-  errorContainer.classList.remove(errorClass);
-  errorContainer.textContent = '';
-}
-
-function validateInput(form, input, classes) {
-  const errorContainer = document.querySelector(`#${input.id}-error`);
-  const isValid = input.validity.valid;
-  const errorText = input.validationMessage;
-
-  if (isValid) {
-    hideError(input, errorContainer, classes);
+    else {
+      this._disableButton();
+    }
   }
 
-  else {
-    showError(input, errorContainer, errorText, classes);
-  }
-  toggleButton(form, classes);
 }
 
-function enableValidation({ formSelector, inputSelector, ...rest }) {
-  const forms = document.querySelectorAll(formSelector);
+// Валидируем все формы
+const forms = document.querySelectorAll(".popup__form");
 
-  forms.forEach(function (form) {
-    form.addEventListener('submit', submitForm);
-    const inputs = form.querySelectorAll(inputSelector);
+forms.forEach((form) => {
+  const newForm = new FormValidator(validationObject, form);
+  newForm.enableValidation();
+});
 
-    inputs.forEach(function (input) {
-      input.addEventListener('input', function () {
-        validateInput(form, input, rest);
-      });
-    });
-    toggleButton(form, rest);
-  });
 
-  toggleButton(popupEditForm, rest)
-}
