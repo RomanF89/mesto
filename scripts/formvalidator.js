@@ -1,24 +1,17 @@
-const validationObject = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__field',
-  submitButtonSelector: '.popup__submit-button',
-  inactiveButtonClass: 'popup__submit-button_disabled',
-  inputErrorClass: 'popup__field_type_error',
-  errorClass: 'popup__error-message_visible'
-};
+export { FormValidator}
 
 class FormValidator {
   constructor(object, form) {
     this._form = form;
     this._obj = object;
+    this._inputList = this._form.querySelectorAll(this._obj.inputSelector);
   }
 
   enableValidation() {
     this._form.addEventListener('submit', this._submitForm);
-    this._form.addEventListener('reset', () => { this._disableButton() });
-    const inputs = this._form.querySelectorAll(this._obj.inputSelector);
+    this._form.addEventListener('reset', () => {this._disableButton()});
 
-    inputs.forEach((input) => {
+    this._inputList.forEach((input) => {
       input.addEventListener('input', () => {
         this._validateInput(input);
       });
@@ -81,14 +74,19 @@ class FormValidator {
     }
   }
 
+  resetValidation() {
+    this._toggleButton();
+    this._inputList.forEach((input) => {
+      const errorContainer = document.querySelector(`#${input.id}-error`);
+      this._hideError(input, errorContainer);
+    });
+  }
 }
 
-// Валидируем все формы
-const forms = document.querySelectorAll(".popup__form");
 
-forms.forEach((form) => {
-  const newForm = new FormValidator(validationObject, form);
-  newForm.enableValidation();
-});
+
+
+
+
 
 
