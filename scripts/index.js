@@ -1,5 +1,5 @@
-import { FormValidator} from "./formvalidator.js";
-import { Card } from "./card.js";
+import { FormValidator} from "./FormValidator.js";
+import { Card } from "./Card.js";
 import {
   popupEdit, popupEditOpenButton, popupEditForm, popupEditName,
   popupEditDescription, profileName, profileDescription, popupAddCard,

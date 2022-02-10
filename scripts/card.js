@@ -20,6 +20,7 @@ class Card {
     this._cardElement = this._getTemplate();
     this._setEventListeners();
     this._cardElement.querySelector(".element__mask-group").src = this._cardImageLink;
+    this._cardElement.querySelector(".element__mask-group").alt = this._cardName;
     this._cardElement.querySelector(".element__title").textContent = this._cardName;
     return this._cardElement;
   }
