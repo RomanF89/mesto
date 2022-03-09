@@ -1,7 +1,7 @@
 export {
-  popupEdit, popupEditOpenButton, popupEditForm, popupEditName,
-  popupEditDescription, profileName, profileDescription, popupAddCard,
-  popupAddOpenButton, popupAddCardForm, popupCardName, popupCardLink,
+  popupEditOpenButton, popupEditForm, popupEditName,
+  popupEditDescription, popupEdit, popupAddCard,
+  popupAddOpenButton, popupAddCardForm,
   popupOpenImage, popupImage, popupImageCaption, validationObject, initialCards
 }
 
@@ -47,18 +47,14 @@ const popupEditForm = popupEdit.querySelector(".popup__form")
 const popupEditName = document.querySelector(".popup__field_type_name");
 const popupEditDescription = document.querySelector(".popup__field_type_description");
 
-const profileName = document.querySelector(".profile__name");
-const profileDescription = document.querySelector(".profile__description");
-
 const popupAddCard = document.querySelector(".popup_type_add-card");
 const popupAddOpenButton = document.querySelector(".profile__add-button");
 const popupAddCardForm = popupAddCard.querySelector(".popup__form");
-const popupCardName = document.querySelector(".popup__field_type_card-name");
-const popupCardLink = document.querySelector(".popup__field_type_card-link");
 
 const popupOpenImage = document.querySelector(".popup_type_image");
 const popupImage = popupOpenImage.querySelector(".popup__image");
 const popupImageCaption = popupOpenImage.querySelector(".popup__image-caption");
+
 
 
 

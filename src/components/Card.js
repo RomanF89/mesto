@@ -1,14 +1,11 @@
-import { openPopupWindow } from "./index.js";
-import { popupOpenImage, popupImage, popupImageCaption } from "./constants.js";
-
 export { Card };
 
-
 class Card {
-  constructor(data, cardSelector) {
+  constructor({ data, cardSelector, handleCardClick }) {
     this._cardSelector = cardSelector;
     this._cardName = data.name;
     this._cardImageLink = data.link;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -26,12 +23,8 @@ class Card {
   }
 
   _openImagePopup() {
-    popupImage.src = this._cardImageLink;
-    popupImageCaption.textContent = this._cardName;
-    popupImage.alt = this._cardName;
-    openPopupWindow(popupOpenImage);
+    this._handleCardClick();
   }
-
 
   _setEventListeners() {
     this._cardElement.querySelector(".element__mask-group").addEventListener("click", () => { this._openImagePopup() });
@@ -44,8 +37,6 @@ class Card {
       evt.target.closest(".element").remove();
     });
   }
-
-
 }
 
 
