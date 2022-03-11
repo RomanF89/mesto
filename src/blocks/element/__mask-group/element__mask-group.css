@@ -2,4 +2,9 @@
   width: 282px;
   height: 282px;
   object-fit: fill;
+  transition: opacity .3s ease-in;
+}
+
+.element__mask-group:hover {
+  opacity: 70%;
 }

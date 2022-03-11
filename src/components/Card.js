@@ -1,10 +1,12 @@
+import { popupImage } from "../utils/constants";
+
 export { Card };
 
 class Card {
   constructor({ data, cardSelector, handleCardClick }) {
     this._cardSelector = cardSelector;
     this._cardName = data.name;
-    this._cardImageLink = data.link;
+    this._cardImageLink = data.link || data.description;
     this._handleCardClick = handleCardClick;
   }
 
@@ -26,15 +28,24 @@ class Card {
     this._handleCardClick();
   }
 
+  _likeCardElement() {
+    this._cardElement.querySelector(".element__like").classList.toggle("element__like_active");
+  }
+
+  _deleteCardElement() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
+
   _setEventListeners() {
     this._cardElement.querySelector(".element__mask-group").addEventListener("click", () => { this._openImagePopup() });
 
     this._cardElement.querySelector(".element__like").addEventListener("click", () => {
-      this._cardElement.querySelector(".element__like").classList.toggle("element__like_active")
+      this._likeCardElement();
     });
 
     this._cardElement.querySelector(".element__delete-button").addEventListener("click", (evt) => {
-      evt.target.closest(".element").remove();
+      this._deleteCardElement();
     });
   }
 }

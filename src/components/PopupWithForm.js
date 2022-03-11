@@ -6,6 +6,7 @@ class PopupWithForm extends Popup {
   constructor(popupSelector, handleSubmitPopup) {
     super(popupSelector);
     this._handleSubmitPopup = handleSubmitPopup;
+    this._form = this._popupSelector.querySelector('.popup__form');
   }
 
   _getInputValues() {
@@ -27,7 +28,6 @@ class PopupWithForm extends Popup {
 
   closePopup() {
     super.closePopup();
-    this._form = this._popupSelector.querySelector('.popup__form');
     this._form.reset();
   }
 

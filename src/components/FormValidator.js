@@ -5,6 +5,7 @@ class FormValidator {
     this._form = form;
     this._obj = object;
     this._inputList = this._form.querySelectorAll(this._obj.inputSelector);
+    this._submitButton = this._form.querySelector(this._obj.submitButtonSelector);
   }
 
   enableValidation() {
@@ -52,9 +53,8 @@ class FormValidator {
   }
 
   _enableButton() {
-    const button = this._form.querySelector(this._obj.submitButtonSelector);
-    button.classList.remove(this._obj.inactiveButtonClass);
-    button.removeAttribute('disabled');
+    this._submitButton.classList.remove(this._obj.inactiveButtonClass);
+    this._submitButton.removeAttribute('disabled');
   }
 
   _disableButton() {

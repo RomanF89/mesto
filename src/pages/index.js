@@ -23,19 +23,23 @@ newCardForm.enableValidation();
 
 //Добавление карточек
 
+const imagePopup = new PopupWithImage('.popup_type_image');
+imagePopup.setEventListeners();
+
+function createCard(item) {
+  const card = new Card({
+    data: item, cardSelector: '.element-template',
+    handleCardClick: () => {
+      imagePopup.openPopup(item);
+    }
+  });
+  const newCardElement = card.generateCard();
+  cardList.addItem(newCardElement);
+}
 
 const cardList = new Section({
   items: initialCards, renderer: (item) => {
-    const card = new Card({
-      data: item, cardSelector: '.element-template',
-      handleCardClick: () => {
-        const imagePopup = new PopupWithImage(item, '.popup_type_image');
-        imagePopup.openPopup();
-        imagePopup.setEventListeners();
-      }
-    });
-    const newCardElement = card.generateCard();
-    cardList.addItem(newCardElement);
+    createCard(item);
   }
 }, '.elements');
 
@@ -45,17 +49,8 @@ cardList.renderItems();
 // Добавление попапов с формой
 
 const addCardFormPopup = new PopupWithForm('.popup_type_add-card', (formData) => {
-  const card = new Card({
-    data: formData, cardSelector: '.element-template',
-    handleCardClick: () => {
-      const imagePopup = new PopupWithImage(formData, '.popup_type_image');
-      imagePopup.openPopup();
-      imagePopup.setEventListeners();
-    }
-
-  });
-  const newCardElement = card.generateCard();
-  cardList.addItem(newCardElement);
+  createCard(formData);
+  console.log(formData);
   addCardFormPopup.closePopup();
 })
 
