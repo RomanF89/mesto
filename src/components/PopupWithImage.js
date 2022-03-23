@@ -17,7 +17,4 @@ class PopupWithImage extends Popup {
     this._popupImageCaption.textContent = this._cardName;
     this._popupImage.alt = this._cardName;
   }
-
-
-
 }

@@ -2,35 +2,10 @@ export {
   popupEditOpenButton, popupEditForm, popupEditName,
   popupEditDescription, popupEdit, popupAddCard,
   popupAddOpenButton, popupAddCardForm,
-  popupOpenImage, popupImage, popupImageCaption, validationObject, initialCards
+  popupOpenImage, popupImage, popupImageCaption, validationObject, profileAvatarContainer,
+  popupAvatarEditForm, popupAvatarEdit
 }
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 const validationObject = {
   formSelector: '.popup__form',
@@ -54,6 +29,10 @@ const popupAddCardForm = popupAddCard.querySelector(".popup__form");
 const popupOpenImage = document.querySelector(".popup_type_image");
 const popupImage = popupOpenImage.querySelector(".popup__image");
 const popupImageCaption = popupOpenImage.querySelector(".popup__image-caption");
+
+const profileAvatarContainer = document.querySelector(".profile__avatar-container");
+const popupAvatarEdit = document.querySelector(".popup_type_change-avatar");
+const popupAvatarEditForm = popupAvatarEdit.querySelector(".popup__form");
 
 
 
