@@ -26,7 +26,7 @@ class FormValidator {
   }
 
   _validateInput(input) {
-    const errorContainer = document.querySelector(`#${input.id}-error`);
+    const errorContainer = this._form.querySelector(`#${input.id}-error`);
     const isValid = input.validity.valid;
     const errorText = input.validationMessage;
 
@@ -58,9 +58,8 @@ class FormValidator {
   }
 
   _disableButton() {
-    const button = this._form.querySelector(this._obj.submitButtonSelector);
-    button.classList.add(this._obj.inactiveButtonClass);
-    button.setAttribute('disabled', '');
+    this._submitButton.classList.add(this._obj.inactiveButtonClass);
+    this._submitButton.setAttribute('disabled', '');
   }
 
   _toggleButton() {
@@ -77,7 +76,7 @@ class FormValidator {
   resetValidation() {
     this._toggleButton();
     this._inputList.forEach((input) => {
-      const errorContainer = document.querySelector(`#${input.id}-error`);
+      const errorContainer = this._form.querySelector(`#${input.id}-error`);
       this._hideError(input, errorContainer);
     });
   }
