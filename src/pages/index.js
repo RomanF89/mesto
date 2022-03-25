@@ -111,11 +111,11 @@ const addCardFormPopup = new PopupWithForm('.popup_type_add-card', (formData) =>
       id: res._id,
       userId: userId,
       ownerId: res.owner._id
-    })
+    });
+    addCardFormPopup.closePopup();
   })
-  .then (() =>{ addCardFormPopup.closePopup()})
   .catch(err => {
-    console.log(err)
+    console.log(err);
   })
   .finally(() => {addCardFormPopup.renderLoading(false)})
 
@@ -130,13 +130,13 @@ const editProfileFormPopup = new PopupWithForm('.popup_type_edit', (formData) =>
 
   api.editProfile(name, description)
     .then((res)=>{
-      editProfileInfo.setUserInfo({name: res.name, description: res.about, avatar: res.avatar, _id: res._id})
+      editProfileInfo.setUserInfo({name: res.name, description: res.about, avatar: res.avatar, _id: res._id});
+      editProfileFormPopup.closePopup();
     })
-      .then (() =>{ editProfileFormPopup.closePopup()})
-      .catch(err => {
-        console.log(err)
-      })
-      .finally(() => {editProfileFormPopup.renderLoading(false)})
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {editProfileFormPopup.renderLoading(false)})
 
 });
 
@@ -149,11 +149,11 @@ const editProfileAvatarPopup = new PopupWithForm('.popup_type_change-avatar', (f
 
   api.changeProfileAvatar(link)
     .then((res) => {
-      editProfileInfo.setUserInfo(res);
+      editProfileInfo.setUserInfo({name: res.name, description: res.about, avatar: res.avatar, _id: res._id});
+      editProfileAvatarPopup.closePopup();
     })
-    .then (() =>{ editProfileAvatarPopup.closePopup()})
     .catch(err => {
-      console.log(err)
+      console.log(err);
     })
     .finally(() => {editProfileAvatarPopup.renderLoading(false)})
   });

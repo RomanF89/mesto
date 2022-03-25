@@ -10,7 +10,6 @@ class FormValidator {
 
   enableValidation() {
     this._form.addEventListener('submit', this._submitForm);
-    this._form.addEventListener('reset', () => { this._disableButton() });
 
     this._inputList.forEach((input) => {
       input.addEventListener('input', () => {
